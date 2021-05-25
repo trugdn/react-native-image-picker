@@ -85,11 +85,13 @@ public class ImagePickerModule extends ReactContextBaseJavaModule implements Act
             if (this.options.durationLimit > 0) {
                 cameraIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, this.options.durationLimit);
             }
+            cameraIntent.putExtra("android.intent.extra.quickCapture",true);
             file = createFile(reactContext, "mp4");
             cameraCaptureURI = createUri(file, reactContext);
         } else {
             requestCode = REQUEST_LAUNCH_IMAGE_CAPTURE;
             cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            cameraIntent.putExtra("android.intent.extra.quickCapture",true);
             file = createFile(reactContext, "jpg");
             cameraCaptureURI = createUri(file, reactContext);
         }
